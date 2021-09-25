@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rasaboun <rasaboun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 16:38:09 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 14:15:20 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/25 16:32:06 by rasaboun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,12 @@ int	main(int ac, char **av)
 {
 	t_vars	vars;
 
+	initvars(&vars);
+	vars.height = 0;
+	vars.mlx = NULL;
+	vars.rgb = 0;
+	vars.width = 0;
+	vars.win = NULL;
 	if (ac != 2)
 		return (0);
 	vars.width = 1920;

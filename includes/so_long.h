@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rasaboun <rasaboun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 16:21:22 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 13:44:12 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:22:44 by rasaboun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,12 @@ char	*read_file(int fd);
 char	*ft_strjoint(char *s1, char *s2);
 void	ft_putcharuni(int c);
 int		key_is_ok(int key);
+
+
+
+
+int	get_size_x(char *str);
+
+
 
 #endif

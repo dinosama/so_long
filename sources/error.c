@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rasaboun <rasaboun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 02:52:28 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 14:15:45 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:43:21 by rasaboun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,16 @@ int	check_filename(char *str)
 
 void	ft_error_two(t_vars *vars, int error, int y)
 {
-	while (y <= vars->map.ymax)
+	
+	if (vars->map.map)
+	{
+	while (y < vars->map.ymax)
 	{
 		free(vars->map.map[y]);
 		y++;
 	}
 	free(vars->map.map);
+	}
 	if (error == 1)
 	{
 		mlx_destroy_image(vars->mlx, vars->map.coin.mlx_img);

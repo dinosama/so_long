@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rasaboun <rasaboun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 02:19:50 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 12:22:44 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:28:03 by rasaboun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_wall(t_vars *vars)
 	while (j < vars->map.ymax)
 	{
 		i = 0;
-		while (i < vars->map.xmax)
+		while (vars->map.map[j][i] != '\0')
 		{
 			if ((j == 0 || j == vars->map.ymax - 1)
 				&& vars->map.map[j][i] != '1')
