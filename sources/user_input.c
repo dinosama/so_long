@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 01:30:40 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 14:16:53 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/27 16:50:07 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ int	check_coins(t_vars *vars)
 	return (1);
 }
 
-int	show_movement(char mem, char *str, int count, char texture)
+int	show_movement(char mem, int count, char texture)
 {
+	int	value;
+
 	count++;
-	str = ft_itoa(count);
-	ft_putstr(" ");
-	ft_putstr(str);
-	ft_putstr("\n");
-	free(str);
+	ft_putchar(' ');
+	ft_putnbr_fd(count, 1);
+	ft_putchar('\n');
 	return (count);
 }
 
@@ -106,7 +106,6 @@ int	handle_keypress(int key, t_vars *vars)
 	static char	texture;
 	static int	count;
 	char		mem;
-	char		*str;
 
 	if (texture == 0)
 		texture = '0';
@@ -124,7 +123,7 @@ int	handle_keypress(int key, t_vars *vars)
 	if (texture == 0)
 		texture = mem;
 	else if (key_is_ok(key))
-		count = show_movement(mem, str, count, texture);
+		count = show_movement(mem, count, texture);
 	if (texture == 'E' && check_coins(vars))
 		ft_error(vars, 2, 0);
 	return (0);

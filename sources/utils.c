@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 02:52:34 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 13:37:16 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/27 17:33:26 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,59 @@ char	*ft_strjoint(char *s1, char *s2)
 	return (str);
 }
 
+char	*allocate_file(char *str, char *temp, int value)
+{
+	if (value == 0)
+	{
+		str = malloc(sizeof(char) * 1);
+		if (!str)
+		{
+			ft_putstr("Error\nMemory issue while allocating");
+			return (NULL);
+		}
+		str[0] = '\0';
+		return (str);
+	}
+	if (value == 1)
+	{
+		temp = malloc(sizeof(char) * 2);
+		if (!temp)
+		{
+			free(str);
+			ft_putstr("Error\nMemory issue while allocating");
+			return (NULL);
+		}
+		temp[0] = '?';
+		temp[1] = '\0';
+		return (temp);
+	}
+}
+
+char	*ft_strjoinjoin(char *str, char *temp)
+{
+	str = ft_strjoint(str, temp);
+	if (!str)
+	{
+		ft_putstr("Error\nMemory issue while allocating");
+		return (NULL);
+	}
+	return (str);
+}
+
 char	*read_file(int fd)
 {
 	char	*temp;
 	char	*str;
 	int		lire;
 
-	str = malloc(sizeof(char) * 1);
-	temp = malloc(sizeof(char) * 2);
-	str[0] = '\0';
-	temp[0] = '?';
-	temp[1] = '\0';
+	str = allocate_file(str, temp, 0);
+	if (!str)
+		return (NULL);
+	temp = allocate_file(str, temp, 1);
+	if (!temp)
+		return (NULL);
 	lire = 1;
-	while (lire != 0)
+	while (lire != 0 && str != NULL)
 	{
 		lire = read(fd, temp, 1);
 		if (lire == -1)
@@ -63,26 +103,8 @@ char	*read_file(int fd)
 			return (NULL);
 		}
 		if (lire != 0)
-			str = ft_strjoint(str, temp);
+			str = ft_strjoinjoin(str, temp);
 	}
 	free(temp);
 	return (str);
-}
-
-void	ft_putcharuni(int c)
-{
-	write(1, &c, 1);
-}
-
-int	key_is_ok(int key)
-{
-	if (key == XK_w || key == XK_Up)
-		return (1);
-	if (key == XK_s || key == XK_Down)
-		return (1);
-	if (key == XK_a || key == XK_Left)
-		return (1);
-	if (key == XK_d || key == XK_Right)
-		return (1);
-	return (0);
 }

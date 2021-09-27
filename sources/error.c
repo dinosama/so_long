@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 02:52:28 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/24 14:15:45 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/27 17:38:17 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,30 @@ int	check_filename(char *str)
 	return (1);
 }
 
+void	ft_destroy(t_vars *vars)
+{
+	mlx_destroy_image(vars->mlx, vars->map.coin.mlx_img);
+	mlx_destroy_image(vars->mlx, vars->map.hero.mlx_img);
+	mlx_destroy_image(vars->mlx, vars->map.floor.mlx_img);
+	mlx_destroy_image(vars->mlx, vars->map.wall.mlx_img);
+	mlx_destroy_image(vars->mlx, vars->map.exit.mlx_img);
+	mlx_destroy_display(vars->mlx);
+}
+
 void	ft_error_two(t_vars *vars, int error, int y)
 {
-	while (y <= vars->map.ymax)
+	if (vars->map.map)
 	{
-		free(vars->map.map[y]);
-		y++;
+		while (y < vars->map.ymax)
+		{
+			free(vars->map.map[y]);
+			y++;
+		}
+		free(vars->map.map);
 	}
-	free(vars->map.map);
 	if (error == 1)
 	{
-		mlx_destroy_image(vars->mlx, vars->map.coin.mlx_img);
-		mlx_destroy_image(vars->mlx, vars->map.hero.mlx_img);
-		mlx_destroy_image(vars->mlx, vars->map.floor.mlx_img);
-		mlx_destroy_image(vars->mlx, vars->map.wall.mlx_img);
-		mlx_destroy_image(vars->mlx, vars->map.exit.mlx_img);
-		mlx_destroy_display(vars->mlx);
+		ft_destroy(vars);
 		free(vars->mlx);
 		exit(0);
 	}

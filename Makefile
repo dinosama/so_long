@@ -15,6 +15,8 @@ SRC			=	sources/so_long.c        \
 					sources/checks.c			 \
 					sources/user_input.c		 \
 					sources/texture_parsing.c\
+					sources/init.c				 \
+					sources/utils2.c			 \
 
 all:		$(MLX) $(LFT) obj $(NAME)
 
