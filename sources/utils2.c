@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 17:30:09 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/27 17:34:48 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:59:02 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,24 @@ int	ft_get_nl(char *str)
 		i++;
 	}
 	return (nl);
+}
+
+int	correct_map(char *map, int fd)
+{
+	int		i;
+
+	i = 0;
+	while (map[i] != '\0')
+	{
+		if (map[i] != '0' && map[i] != '1' && map[i] != 'P' && map[i] != 'E'
+			&& map[i] != 'C' && map[i] != '\n')
+		{
+			ft_putstr("Error\nBad map");
+			free(map);
+			close(fd);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

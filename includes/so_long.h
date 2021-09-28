@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 16:21:22 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/27 17:35:06 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/28 14:43:25 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include <unistd.h>
-# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <string.h>
@@ -89,15 +89,16 @@ int		check_coins(t_vars *vars);
 char	move_player_leftright(char texture, t_vars *vars, int key);
 char	move_player_updown(char texture, t_vars *vars, int key);
 // STRUCTURE INIT
-void    initimg(t_imgx* mm);
-void    initpos(t_pos *pp);
-void    initmap(t_map *ma);
-void    initvars(t_vars *va);
+void	initimg(t_imgx *mm);
+void	initpos(t_pos *pp);
+void	initmap(t_map *ma);
+void	initvars(t_vars *va);
 // OTHERS
 char	*read_file(int fd);
 char	*ft_strjoint(char *s1, char *s2);
 void	ft_putcharuni(int c);
 int		key_is_ok(int key);
 int		ft_get_nl(char *str);
+int		correct_map(char *map, int fd);
 
 #endif

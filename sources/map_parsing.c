@@ -6,7 +6,7 @@
 /*   By: aaapatou <aaapatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 02:51:42 by aaapatou          #+#    #+#             */
-/*   Updated: 2021/09/27 17:35:19 by aaapatou         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:57:10 by aaapatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int	parse_map(t_vars *vars, char *file)
 	}
 	map = read_file(fd);
 	if (!map)
+		return (0);
+	if (!correct_map(map, fd))
 		return (0);
 	vars->map.map = get_two_d_map(vars, map, 0, 0);
 	free(map);
